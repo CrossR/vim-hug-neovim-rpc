@@ -48,7 +48,10 @@ def nvim_buf_set_var(buffer, name, val):
     buffer.vars[name] = val
 
 
-def nvim_buf_get_lines(buffer, start, end, *args):
+def nvim_buf_get_lines(bufNum, start, end, *args):
+
+    buffer = vim.current.buffer if bufNum == 0 else vim.buffers[bufNum]
+
     if start < 0:
         start = len(buffer) + 1 + start
     if end < 0:
@@ -60,7 +63,10 @@ def nvim_eval(expr):
     return nvim_call_function('eval', [expr])
 
 
-def nvim_buf_set_lines(buffer, start, end, err, lines):
+def nvim_buf_set_lines(bufNum, start, end, err, lines):
+
+    buffer = vim.current.buffer if bufNum == 0 else vim.buffers[bufNum]
+
     if start < 0:
         start = len(buffer) + 1 + start
     if end < 0:
