@@ -120,6 +120,9 @@ def nvim_get_current_win():
 def nvim_win_get_cursor(window):
     return window.cursor
 
+def nvim_win_set_cursor(window, pos):
+    window.cursor = pos
+
 
 def nvim_win_get_buf(window):
     return window.buffer
